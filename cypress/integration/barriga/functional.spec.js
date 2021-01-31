@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import loc from '../../support/locators'
+import '../../support/commandsContas'
 
 describe('Should test at a functional level', () => {
   before(() => {
@@ -9,20 +10,23 @@ describe('Should test at a functional level', () => {
   })
 
   it('Should insert an account', () => {
-    cy.get(loc.MENU.SETTINGS).click()
-    cy.get(loc.MENU.CONTAS).click()
-    cy.get(loc.CONTAS.NOME).click().type('Conta de teste')
-    cy.get(loc.CONTAS.BTN_SALVAR).click()
+    cy.acessarMenuConta()
+    cy.inserirConta('Conta de teste')
     cy.get(loc.MESSAGE).should('contain', 'inserida com sucesso')
   })
 
   it('Should edit an account', () => {
-    cy.get(loc.MENU.SETTINGS).click()
-    cy.get(loc.MENU.CONTAS).click()
+    cy.acessarMenuConta()
     cy.xpath(loc.CONTAS.XP_BTN_ALTERAR).click()
     cy.get(loc.CONTAS.NOME).clear().type('Conta editada')
     cy.get(loc.CONTAS.BTN_SALVAR).click()
     cy.get(loc.MESSAGE).should('contain', 'atualizada com sucesso')
+  })
+
+  it('Should not create an account with the same name', () => {
+    cy.acessarMenuConta()
+    cy.inserirConta('Conta editada')
+    cy.get(loc.MESSAGE).should('contain', 'code 400')
   })
 })
 
