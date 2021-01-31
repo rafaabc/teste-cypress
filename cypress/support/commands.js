@@ -26,7 +26,7 @@
 import loc from './locators'
 
 Cypress.Commands.add('login', (user, passwd) => {
-  cy.visit('http://barrigareact.wcaquino.me/')
+  cy.visit('https://barrigareact.wcaquino.me/')
   cy.get(loc.LOGIN.USER).click().type(user)
   cy.get(loc.LOGIN.PASSWORD).click().type(passwd)
   cy.get(loc.LOGIN.BTN_LOGIN).click()
