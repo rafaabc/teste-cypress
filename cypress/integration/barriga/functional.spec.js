@@ -38,7 +38,7 @@ describe('Should test at a functional level', () => {
   it('Should create a transaction', () => {
     cy.get(loc.MENU.MOVIMENTACAO).click()
     cy.get(loc.MOVIMENTACAO.DESCRICAO).type('Desc')
-    cy.get(loc.MOVIMENTACAO.VALOR).type('100')
+    cy.get(loc.MOVIMENTACAO.VALOR).type('100', { force: true })
     cy.get(loc.MOVIMENTACAO.INTERESSADO).type('Inter')
     cy.get(loc.MOVIMENTACAO.CONTA).select('Conta para movimentacoes')
     cy.get(loc.MOVIMENTACAO.STATUS).click()

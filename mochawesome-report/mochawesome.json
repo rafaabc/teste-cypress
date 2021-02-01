@@ -1,0 +1,195 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-02-01T21:38:44.898Z",
+    "end": "2021-02-01T21:39:07.995Z",
+    "duration": 23097,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e63ebbc0-33e9-489c-83d3-62f4637531df",
+      "title": "",
+      "fullFile": "cypress/integration/barriga/functional.spec.js",
+      "file": "cypress/integration/barriga/functional.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6ef35f78-5952-4669-ad4f-dee80fbb4f5d",
+          "title": "Should test at a functional level",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should insert an account",
+              "fullTitle": "Should test at a functional level Should insert an account",
+              "timedOut": null,
+              "duration": 7289,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.acessarMenuConta();\ncy.inserirConta('Conta de teste');\ncy.get(_locators[\"default\"].MESSAGE).should('contain', 'inserida com sucesso');",
+              "err": {},
+              "uuid": "56eee386-23bf-49a0-b30e-1efd44e1d3fd",
+              "parentUUID": "6ef35f78-5952-4669-ad4f-dee80fbb4f5d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should edit an account",
+              "fullTitle": "Should test at a functional level Should edit an account",
+              "timedOut": null,
+              "duration": 3316,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.acessarMenuConta();\ncy.xpath(_locators[\"default\"].CONTAS.FN_XP_BTN_ALTERAR('Conta para alterar')).click();\ncy.get(_locators[\"default\"].CONTAS.NOME).clear().type('Conta alterada');\ncy.get(_locators[\"default\"].CONTAS.BTN_SALVAR).click();\ncy.get(_locators[\"default\"].MESSAGE).should('contain', 'atualizada com sucesso');",
+              "err": {},
+              "uuid": "59458a9c-3ff1-48de-91aa-99e1ba2f0773",
+              "parentUUID": "6ef35f78-5952-4669-ad4f-dee80fbb4f5d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should not create an account with the same name",
+              "fullTitle": "Should test at a functional level Should not create an account with the same name",
+              "timedOut": null,
+              "duration": 1140,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.acessarMenuConta();\ncy.get(_locators[\"default\"].CONTAS.NOME).type('Conta mesmo nome');\ncy.get(_locators[\"default\"].CONTAS.BTN_SALVAR).click();\ncy.get(_locators[\"default\"].MESSAGE).should('contain', 'code 400');",
+              "err": {},
+              "uuid": "46425d20-d5ba-44df-8d90-90b145dc8bb1",
+              "parentUUID": "6ef35f78-5952-4669-ad4f-dee80fbb4f5d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should create a transaction",
+              "fullTitle": "Should test at a functional level Should create a transaction",
+              "timedOut": null,
+              "duration": 5355,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(_locators[\"default\"].MENU.MOVIMENTACAO).click();\ncy.get(_locators[\"default\"].MOVIMENTACAO.DESCRICAO).type('Desc');\ncy.get(_locators[\"default\"].MOVIMENTACAO.VALOR).type('100', {\n  force: true\n});\ncy.get(_locators[\"default\"].MOVIMENTACAO.INTERESSADO).type('Inter');\ncy.get(_locators[\"default\"].MOVIMENTACAO.CONTA).select('Conta para movimentacoes');\ncy.get(_locators[\"default\"].MOVIMENTACAO.STATUS).click();\ncy.get(_locators[\"default\"].MOVIMENTACAO.BTN_SALVAR).click();\ncy.get(_locators[\"default\"].MESSAGE).should('contain', 'sucesso');\ncy.get(_locators[\"default\"].EXTRATO.LINHAS).should('have.length', 7);\ncy.xpath(_locators[\"default\"].EXTRATO.FN_XP_BUSCA_ELEMENTO('Desc', '100,00')).should('exist');",
+              "err": {},
+              "uuid": "d55b8a83-937c-4d9f-be5b-b500843bd459",
+              "parentUUID": "6ef35f78-5952-4669-ad4f-dee80fbb4f5d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should get balance",
+              "fullTitle": "Should test at a functional level Should get balance",
+              "timedOut": null,
+              "duration": 2785,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(_locators[\"default\"].MENU.HOME).click();\ncy.xpath(_locators[\"default\"].SALDO.FN_XP_SALDO_CONTA('Conta para saldo')).should('contain', '534,00');\ncy.get(_locators[\"default\"].MENU.EXTRATO).click();\ncy.xpath(_locators[\"default\"].EXTRATO.FN_XP_ALTERAR_ELEMENTO('Movimentacao 1, calculo saldo')).click();\ncy.get(_locators[\"default\"].MOVIMENTACAO.DESCRICAO).should('have.value', 'Movimentacao 1, calculo saldo');\ncy.get(_locators[\"default\"].MOVIMENTACAO.STATUS).click();\ncy.get(_locators[\"default\"].MOVIMENTACAO.BTN_SALVAR).click();\ncy.get(_locators[\"default\"].MESSAGE).should('contain', 'Movimentação alterada com sucesso');\ncy.get(_locators[\"default\"].MENU.HOME).click();\ncy.xpath(_locators[\"default\"].SALDO.FN_XP_SALDO_CONTA('Conta para saldo')).should('contain', '4.034,00');",
+              "err": {},
+              "uuid": "7477d00b-3d6e-418b-8b2a-9bb1436e77de",
+              "parentUUID": "6ef35f78-5952-4669-ad4f-dee80fbb4f5d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should remove a transaction",
+              "fullTitle": "Should test at a functional level Should remove a transaction",
+              "timedOut": null,
+              "duration": 1067,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(_locators[\"default\"].MENU.EXTRATO).click();\ncy.xpath(_locators[\"default\"].EXTRATO.FN_XP_REMOVER_ELEMENTO('Movimentacao para exclusao')).click();\ncy.get(_locators[\"default\"].MESSAGE).should('contain', 'removida com sucesso');",
+              "err": {},
+              "uuid": "642ef4a5-edc5-4559-871d-5e782405ea6d",
+              "parentUUID": "6ef35f78-5952-4669-ad4f-dee80fbb4f5d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "56eee386-23bf-49a0-b30e-1efd44e1d3fd",
+            "59458a9c-3ff1-48de-91aa-99e1ba2f0773",
+            "46425d20-d5ba-44df-8d90-90b145dc8bb1",
+            "d55b8a83-937c-4d9f-be5b-b500843bd459",
+            "7477d00b-3d6e-418b-8b2a-9bb1436e77de",
+            "642ef4a5-edc5-4559-871d-5e782405ea6d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 20952,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.1.0"
+    }
+  }
+}

@@ -5,13 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:dashboard": "node_modules/.bin/cypress run cypress run --record --key 28e3c9d0-3430-4f3c-bad1-7145f45634ed",
+    "cypress:mochawesome": "cypress run --reporter mochawesome"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^6.3.0",
     "cypress-xpath": "^1.6.1"
+  },
+  "devDependencies": {
+    "cypress": "^6.3.0",
+    "mocha": "^8.2.1",
+    "mochawesome": "^6.2.1"
   }
 }

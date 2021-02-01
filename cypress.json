@@ -1,1 +1,6 @@
-{}
+{
+  "projectId": "xxemvr",
+  "reporter": "mochawesome",
+  "screenshotOnRunFailure": false,
+  "video": false
+}
