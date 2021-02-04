@@ -20,7 +20,7 @@ describe('Should test at a functional level', () => {
     cy.get(loc.MESSAGE).should('contain', 'inserida com sucesso')
   })
 
-  it('Should edit an account', () => {
+  it('Should update an account', () => {
     cy.acessarMenuConta()
     cy.xpath(loc.CONTAS.FN_XP_BTN_ALTERAR('Conta para alterar')).click()
     cy.get(loc.CONTAS.NOME).clear().type('Conta alterada')

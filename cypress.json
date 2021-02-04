@@ -2,5 +2,6 @@
   "projectId": "xxemvr",
   "reporter": "mochawesome",
   "screenshotOnRunFailure": false,
-  "video": false
+  "video": false,
+  "baseUrl": "https://barrigarest.wcaquino.me"
 }
