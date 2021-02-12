@@ -3,7 +3,7 @@
 import loc from '../../support/locators'
 import '../../support/commandsContas'
 
-describe('Should test at a functional level', () => {
+describe('Should test at a frontend level', () => {
   before(() => {
     cy.intercept('POST', '/signin', {
       id: '13283',
@@ -22,18 +22,41 @@ describe('Should test at a functional level', () => {
       saldo: '1000000,00'
     }
     ]).as('saldo')
-    cy.login('rafael@teste.com', 'teste')
+    cy.login('rafael@teste.com', 'senha errada')
+  })
+
+  after(() => {
+    cy.clearLocalStorage()
   })
 
   beforeEach(() => {
     cy.get(loc.MENU.HOME).click()
-    cy.resetApp()
   })
 
-  it('Should insert an account', () => {
+  it.only('Should create an account', () => {
+    //https://github.com/cypress-io/cypress/issues/9302 so this will be commented 
+    /*cy.intercept('GET', '/contas', [
+      { id: 1, nome: 'Carteira', visivel: true, usuario_id: 1 },
+      { id: 2, nome: 'Banco', visivel: true, usuario_id: 1 }
+    ]).as('contas')*/
+
+    cy.intercept('POST', '/contas', {
+      id: 3,
+      nome: 'Conta de teste',
+      visivel: true,
+      usuario_id: 1
+    }).as('saveContas')
+
     cy.acessarMenuConta()
+
+    cy.intercept('GET', '/contas', [
+      { id: 1, nome: 'Carteira', visivel: true, usuario_id: 1 },
+      { id: 2, nome: 'Banco', visivel: true, usuario_id: 1 },
+      { id: 3, nome: 'Conta de teste', visivel: true, usuario_id: 1 }
+    ]).as('contasSave')
+
     cy.inserirConta('Conta de teste')
-    cy.get(loc.MESSAGE).should('contain', 'inserida com sucesso')
+    cy.get(loc.MESSAGE).should('contain', 'Conta inserida com sucesso')
   })
 
   it('Should update an account', () => {
