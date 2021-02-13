@@ -33,7 +33,7 @@ describe('Should test at a frontend level', () => {
     cy.get(loc.MENU.HOME).click()
   })
 
-  it.only('Should create an account', () => {
+  it('Should create an account', () => {
     //https://github.com/cypress-io/cypress/issues/9302 so this will be commented 
     /*cy.intercept('GET', '/contas', [
       { id: 1, nome: 'Carteira', visivel: true, usuario_id: 1 },
@@ -60,20 +60,39 @@ describe('Should test at a frontend level', () => {
   })
 
   it('Should update an account', () => {
+    cy.intercept('GET', '/contas', [
+      { id: 1, nome: 'Carteira', visivel: true, usuario_id: 1 },
+      { id: 2, nome: 'Banco', visivel: true, usuario_id: 1 }
+    ]).as('contas')
+
+    cy.intercept('PUT', '/contas/1', [
+      { id: 1, nome: 'Conta alterada', visivel: true, usuario_id: 1 }
+    ]).as('contasUpdate')
+
     cy.acessarMenuConta()
-    cy.xpath(loc.CONTAS.FN_XP_BTN_ALTERAR('Conta para alterar')).click()
+    cy.xpath(loc.CONTAS.FN_XP_BTN_ALTERAR('Carteira')).click()
     cy.get(loc.CONTAS.NOME).clear().type('Conta alterada')
-    cy.get(loc.CONTAS.BTN_SALVAR).click()
+    cy.get(loc.CONTAS.BTN_SALVAR).click({ force: true })
     cy.get(loc.MESSAGE).should('contain', 'atualizada com sucesso')
   })
 
   it('Should not create an account with the same name', () => {
+    cy.intercept('GET', '/contas', [
+      { id: 1, nome: 'Carteira', visivel: true, usuario_id: 1 },
+      { id: 2, nome: 'Banco', visivel: true, usuario_id: 1 }
+    ]).as('contas')
+
+    cy.intercept('POST', '/contas', {
+      "error": "Já existe uma conta com esse nome!", statusCode: 400
+    }).as('saveContaMesmoNome')
+
     cy.acessarMenuConta()
     cy.get(loc.CONTAS.NOME).type('Conta mesmo nome')
-    cy.get(loc.CONTAS.BTN_SALVAR).click()
+    cy.get(loc.CONTAS.BTN_SALVAR).click({ force: true })
     cy.get(loc.MESSAGE).should('contain', 'code 400')
   })
 
+  /*
   it('Should create a transaction', () => {
     cy.get(loc.MENU.MOVIMENTACAO).click()
     cy.get(loc.MOVIMENTACAO.DESCRICAO).type('Desc')
@@ -105,7 +124,7 @@ describe('Should test at a frontend level', () => {
     cy.get(loc.MENU.EXTRATO).click()
     cy.xpath(loc.EXTRATO.FN_XP_REMOVER_ELEMENTO('Movimentacao para exclusao')).click()
     cy.get(loc.MESSAGE).should('contain', 'removida com sucesso')
-  })
+  })*/
 })
 
 
