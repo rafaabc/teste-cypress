@@ -1,2 +1,67 @@
 # Framework de Teste Automatizado com Cypress
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rafaabc_teste-cypress&metric=alert_status)](https://sonarcloud.io/dashboard?id=rafaabc_teste-cypress) [![teste-cypress](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/xxemvr&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/xxemvr/runs)
+
+<p align="justify"> Após treinamento realizado na Udemy - https://www.udemy.com/course/testes-cypress/ de testes em diferentes camadas com Cypress, segue o exemplo de framework de teste a nível funcional, API e apenas frontend. </p>
+
+<p align="justify"> Foi utilizado o site de testes https://barrigareact.wcaquino.me/login para simular os cenários de validação de saldo, criação de transação financeira, atualização e remoção, entre outros. </p>
+
+<p align="justify"> No cenário frontend a ferramenta permite simular as chamadas no backend pelo desvio de rota com cy.route. Entretanto, a função está deprecada e adaptei as chamadas via cy.intercept. Alguns cenários dessa suite foram impactados uma vez que a nova função ainda tem limitações como o override a partir da versão 6.0.0. Então foi apenas para fins de estudo como são os testes nessa camada. As validações mais assertivas e rápidas ainda se concentram no backend. </p> 
+
+# Requisitos
+
+Ferramentas:
+- [VSCode](https://code.visualstudio.com/Download)
+- [Cypress](https://www.cypress.io/)
+
+Dependências:
+- [Mockawesome](https://www.npmjs.com/package/mochawesome)
+
+Adicionais:
+- [cypress-xpath](https://github.com/cypress-io/cypress-xpath)
+
+# Estrutura de diretórios
+
+```
+./projeto
+├─ cypress/
+    ├─ fixtures
+    └─ integration/
+        └─ barriga/
+            ├─ backend.spec.js
+            ├─ frontend.spec.js
+            └─ functional.spec.js
+    └─ plugins/
+    └─ support/
+       ├─ commands.js
+       ├─ commandsContas.js
+       ├─ index.js
+       └─ locators.js
+```
+
+- cypress: diretório principal
+- fixtures: diretório onde será construído o script de teste inicial
+- plugins: diretório onde será possível estender alguns comportamentos da ferramenta
+- support: diretório com arquivos de comandos customizados e elementos mapeados para os testes funcionais
+
+# Executando via linha de comando
+<p align="justify"> Foram construídos scripts que se encontram no arquivo package.json:
+
+Abrir a ferramenta </p>
+
+`npm run cypress:open`
+___
+Rodar os teste no modo headless </p>
+
+`npm run cypress:run`
+___
+Rodar os testes via Cypress Dashboard* </p>
+
+`npm run cypress:dashboard`
+
+*Necessário configurar o Dashboard localmente para integração com o código
+___
+Rodar os testes via mochawesome </p>
+
+`npm run cypress:mochawesome`
+
+<p align="justify"> Assim que executados os testes via mochawesome será criada uma pasta chamada "mochawesome-report". Basta abrir no navegador o arquivo html gerado. </p>
