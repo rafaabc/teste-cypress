@@ -41,13 +41,11 @@ describe('Should test at a functional level', () => {
   })
 
   it('Should get balance', () => {
-    cy.get(loc.MENU.HOME).click()
+    cy.get(loc.MENU.HOME).click({ timeout: 3000 })
     cy.xpath(loc.SALDO.FN_XP_SALDO_CONTA('Conta para saldo')).should('contain', '534,00')
-    cy.get(loc.MENU.EXTRATO).click()
-    cy.xpath(loc.EXTRATO.FN_XP_ALTERAR_ELEMENTO('Movimentacao 1, calculo saldo')).click()
+    cy.acessarTransacao('Movimentacao 1, calculo saldo')
     cy.get(loc.MOVIMENTACAO.DESCRICAO).should('have.value', 'Movimentacao 1, calculo saldo')
-    cy.get(loc.MOVIMENTACAO.STATUS).click()
-    cy.get(loc.MOVIMENTACAO.BTN_SALVAR).click()
+    cy.alterarStatusTransacao()
     cy.get(loc.MESSAGE).should('contain', 'Movimentação alterada com sucesso')
     cy.get(loc.MENU.HOME).click()
     cy.xpath(loc.SALDO.FN_XP_SALDO_CONTA('Conta para saldo')).should('contain', '4.034,00')

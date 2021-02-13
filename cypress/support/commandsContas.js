@@ -30,3 +30,13 @@ Cypress.Commands.add('removerTransacao', conta => {
   cy.get(loc.MENU.EXTRATO).click()
   cy.xpath(loc.EXTRATO.FN_XP_REMOVER_ELEMENTO(conta)).click()
 })
+
+Cypress.Commands.add('acessarTransacao', transacao => {
+  cy.get(loc.MENU.EXTRATO).click()
+  cy.xpath(loc.EXTRATO.FN_XP_ALTERAR_ELEMENTO(transacao)).click()
+})
+
+Cypress.Commands.add('alterarStatusTransacao', () => {
+  cy.get(loc.MOVIMENTACAO.STATUS).click()
+  cy.get(loc.MOVIMENTACAO.BTN_SALVAR).click()
+})
