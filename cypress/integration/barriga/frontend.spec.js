@@ -33,6 +33,20 @@ describe('Should test at a frontend level', () => {
     cy.get(loc.MENU.HOME).click()
   })
 
+  it('Should test responsiveness', () => {
+    cy.get('[data-test=menu-home').should('exist')
+      .and('be.visible')
+    cy.viewport(500, 700)
+    cy.get('[data-test=menu-home').should('exist')
+      .and('not.be.visible')
+    cy.viewport('iphone-5')
+    cy.get('[data-test=menu-home').should('exist')
+      .and('not.be.visible')
+    cy.viewport('ipad-2')
+    cy.get('[data-test=menu-home').should('exist')
+      .and('be.visible')
+  })
+
   it('Should create an account', () => {
     //https://github.com/cypress-io/cypress/issues/9302 so this will be commented 
     /*cy.intercept('GET', '/contas', [
@@ -207,6 +221,7 @@ describe('Should test at a frontend level', () => {
     cy.xpath(loc.EXTRATO.FN_XP_REMOVER_ELEMENTO('Movimentacao para exclusao')).click()
     cy.get(loc.MESSAGE).should('contain', 'removida com sucesso')
   })
+
 })
 
 
