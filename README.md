@@ -50,9 +50,12 @@ Abrir a ferramenta </p>
 
 `npm run cypress:open`
 ___
-Rodar os teste no modo headless </p>
+Rodar os teste no modo headless a depender do browser de escolha </p>
 
-`npm run cypress:run`
+`npm run cypress:run_electron`
+`npm run cypress:run_chrome`
+`npm run cypress:run_firefox`
+
 ___
 Rodar os testes via Cypress Dashboard* </p>
 

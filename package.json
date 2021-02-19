@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
+    "cypress:run_electron": "cypress run --headless --browser chrome",
+    "cypress:run_chrome": "cypress run --headless --browser chrome",
+    "cypress:run_firefox": "cypress run --headless --browser firefox",
     "cypress:dashboard": "node_modules/.bin/cypress run cypress run --record --key 28e3c9d0-3430-4f3c-bad1-7145f45634ed",
     "cypress:mochawesome": "cypress run --reporter mochawesome"
   },
