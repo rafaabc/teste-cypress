@@ -14,7 +14,7 @@ Ferramentas:
 - [Cypress](https://www.cypress.io/)
 
 Dependências:
-- [Mockawesome](https://www.npmjs.com/package/mochawesome)
+- [Allure](https://www.npmjs.com/package/@shelex/cypress-allure-plugin)
 
 Adicionais:
 - [cypress-xpath](https://github.com/cypress-io/cypress-xpath)
@@ -63,8 +63,9 @@ Rodar os testes via Cypress Dashboard* </p>
 
 *Necessário configurar o Dashboard localmente para integração com o código
 ___
-Rodar os testes via mochawesome </p>
+Rodar os testes com Allure Report </p>
 
-`npm run cypress:mochawesome`
+`npm run test`
 
-<p align="justify"> Assim que executados os testes via mochawesome será criada uma pasta chamada "mochawesome-report". Basta abrir no navegador o arquivo html gerado. </p>
+<p align="justify"> O script limpa os testes anteriores, cria 2 pastas "allure-report" e "allure-results"
+com o novo resultado e abre automaticamente o relatório no navegador. </p>

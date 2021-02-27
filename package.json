@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx npm-run-all alure:clear cy:run allure:generate allure:open",
+    "cy:run": "cypress run --config video=false --env allure=true",
+    "allure:generate": "allure generate allure-results",
+    "allure:open": "allure open allure-report",
+    "alure:clear": "rm -r allure-results/ allure-report || true",
     "cypress:open": "cypress open",
     "cypress:run_electron": "cypress run --headless --browser chrome",
     "cypress:run_chrome": "cypress run --headless --browser chrome",
     "cypress:run_firefox": "cypress run --headless --browser firefox",
-    "cypress:dashboard": "node_modules/.bin/cypress run cypress run --record --key 28e3c9d0-3430-4f3c-bad1-7145f45634ed",
-    "cypress:mochawesome": "cypress run --reporter mochawesome"
+    "cypress:dashboard": "node_modules/.bin/cypress run cypress run --record --key 28e3c9d0-3430-4f3c-bad1-7145f45634ed"
   },
   "keywords": [],
   "author": "",
@@ -19,8 +22,8 @@
     "cypress-xpath": "^1.6.1"
   },
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.3.5",
     "cypress": "^6.4.0",
-    "mocha": "^8.2.1",
-    "mochawesome": "^6.2.1"
+    "mocha": "^8.2.1"
   }
 }
