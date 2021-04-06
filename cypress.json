@@ -2,5 +2,6 @@
   "projectId": "xxemvr",
   "screenshotOnRunFailure": false,
   "video": false,
-  "baseUrl": "https://barrigarest.wcaquino.me"
+  "baseUrl": "https://barrigarest.wcaquino.me",
+  "defaultCommandTimeout": 10000
 }
