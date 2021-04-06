@@ -1,5 +1,5 @@
 # Framework de Teste Automatizado com Cypress
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rafaabc_teste-cypress&metric=alert_status)](https://sonarcloud.io/dashboard?id=rafaabc_teste-cypress) [![teste-cypress](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/xxemvr&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/xxemvr/runs)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rafaabc_teste-cypress&metric=alert_status)](https://sonarcloud.io/dashboard?id=rafaabc_teste-cypress) [![teste-cypress](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/xxemvr&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/xxemvr/runs) [![Cypress Tests using Cypress Docker Image](https://github.com/rafaabc/teste-cypress/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/rafaabc/teste-cypress/actions/workflows/main.yml)
 
 <p align="justify"> Após treinamento realizado na Udemy - https://www.udemy.com/course/testes-cypress/ de testes em diferentes camadas com Cypress, segue o exemplo de framework de teste a nível funcional, API e apenas frontend. </p>
 
