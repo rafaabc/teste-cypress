@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@shelex/cypress-allure-plugin": "^2.3.5",
-    "cypress": "^6.4.0",
+    "cypress": "^6.9.1",
     "mocha": "^8.2.1"
   }
 }

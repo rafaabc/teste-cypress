@@ -188,7 +188,7 @@ describe('Should test at a frontend level', () => {
     cy.intercept('GET', '/extrato/**', { fixture: 'movimentacaoSalva.json' })
 
     cy.get(loc.MENU.HOME).click()
-    cy.xpath(loc.SALDO.FN_XP_SALDO_CONTA('Carteira')).should('contain', '100,00')
+    cy.xpath(loc.SALDO.FN_XP_SALDO_CONTA('Carteira')).should('be.visible').and('contain', '100,00')
     cy.get(loc.MENU.EXTRATO).click()
     cy.xpath(loc.EXTRATO.FN_XP_ALTERAR_ELEMENTO('Movimentacao 1, calculo saldo')).click()
     cy.get(loc.MOVIMENTACAO.DESCRICAO).should('have.value', 'Movimentacao 1, calculo saldo')
