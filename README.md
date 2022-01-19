@@ -1,32 +1,33 @@
-# Framework de Teste Automatizado com Cypress
+# Framework of automated GUI tests with Cypress
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rafaabc_teste-cypress&metric=alert_status)](https://sonarcloud.io/dashboard?id=rafaabc_teste-cypress) [![teste-cypress](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/xxemvr&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/xxemvr/runs) [![Cypress Tests using Cypress Docker Image](https://github.com/rafaabc/teste-cypress/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/rafaabc/teste-cypress/actions/workflows/main.yml)
 
-Após treinamento realizado na [Udemy](https://www.udemy.com/course/testes-cypress/) de testes em diferentes camadas com Cypress, segue o exemplo de framework de teste a nível funcional, API e apenas frontend.
+After attending a test automation course with Cypress (https://www.udemy.com/course/testes-cypress/) in different layers, here is an example of a framework to test functionally, in the API layer and in the frontend component.
 
-Foi utilizado o site de [testes](https://barrigareact.wcaquino.me/login) para simular os cenários de validação de saldo, criação de transação financeira, atualização e remoção, entre outros.
+The [test](https://barrigareact.wcaquino.me/login) website was used to simulate the balance validation, financial transaction creation, update and removal scenarios, among others.
 
-No cenário frontend a ferramenta permite simular as chamadas no backend pelo desvio de rota com cy.route. Entretanto, a função está deprecada e adaptei as chamadas via cy.intercept. Alguns cenários dessa suite foram impactados uma vez que a nova função ainda tem limitações como o override a partir da versão 6.0.0. Então foi apenas para fins de estudo como são os testes nessa camada. As validações mais assertivas e rápidas ainda se concentram no backend.
+In the frontend scenario, the tool allows simulating the backend calls by route deviation with cy.route. However, the function is deprecated and I adapted the calls via cy.intercept. Some scenarios in this suite were impacted as the new function still has limitations such as override as of version 6.0.0. So it was just to study what the tests are like in this layer. The most assertive and fastest validations still focus on the backend.
 
-## Requisitos
 
-Ferramentas:
+## Requirements
+
+Tools:
 
 - [VSCode](https://code.visualstudio.com/Download)
 - [Cypress](https://www.cypress.io/)
 
-Dependências:
+Dependencies:
 
 - [Allure](https://www.npmjs.com/package/@shelex/cypress-allure-plugin)
 
-Adicionais:
+Additional:
 
 - [cypress-xpath](https://github.com/cypress-io/cypress-xpath)
 
-## Estrutura de diretórios
+## Directory Structure
 
 ```js
-./projeto
+./project
 ├─ cypress/
     ├─ fixtures
     └─ integration/
@@ -42,22 +43,24 @@ Adicionais:
        └─ locators.js
 ```
 
-- cypress: diretório principal
-- fixtures: diretório onde será construído o script de teste inicial
-- plugins: diretório onde será possível estender alguns comportamentos da ferramenta
-- support: diretório com arquivos de comandos customizados e elementos mapeados para os testes funcionais
+- cypress: main directory
+- fixtures: directory where the initial test script will be built
+- plugins: directory where it will be possible to extend some tool behaviors
+- support: directory with custom command files and elements mapped to the functional tests
 
-## Executando via linha de comando
 
-Foram construídos scripts que se encontram no arquivo package.json:
+## Running via command line
 
-Abrir a ferramenta
+Scripts were built that can be found in the package.json file:
+
+Open the tool
 
 `npm run cypress:open`
 
 ---
 
-Rodar os teste no modo headless a depender do browser de escolha </p>
+Run the tests in headless mode depending on the browser of choice
+ </p>
 
 `npm run cypress:run_electron`
 `npm run cypress:run_chrome`
@@ -65,17 +68,18 @@ Rodar os teste no modo headless a depender do browser de escolha </p>
 
 ---
 
-Rodar os testes via Cypress Dashboard\* </p>
+Run tests via Cypress Dashboard\*</p>
 
 `npm run cypress:dashboard`
 
-\*Necessário configurar o Dashboard localmente para integração com o código
+\*Need to configure Dashboard locally for code integration
+
 
 ---
 
-Rodar os testes com Allure Report </p>
+Run tests with Allure Report </p>
 
 `npm run test`
 
-O script limpa os testes anteriores, cria 2 pastas "allure-report" e "allure-results"
-com o novo resultado e abre automaticamente o relatório no navegador.
+The script cleans the previous tests, creates 2 folders "allure-report" and "allure-results"
+with the new result and automatically opens the report in the browser.
